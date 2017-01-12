@@ -1,0 +1,75 @@
+*{
+    font-family: monospace;
+    box-sizing: border-box !important;
+}
+body{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+p{
+    font-size: 14px;
+}
+button{
+    font-size: 12px;
+}
+.container{
+    width: 100vw;
+    height: auto;
+    position: relative;
+}
+.row{
+    width: 98%;
+    
+}
+ul.navigation{
+    list-style: none;
+    padding: 0px;
+    margin: 0 auto;
+    text-align: center;
+}
+ul.navigation li{
+    font-family: monospace;
+    font-size: 12px;
+    margin: 5px 10px;
+    display: inline-block;
+}
+#landRegForm,#getLandDetailsForm{
+    margin: 0 auto;
+}
+#landRegForm table,#getLandDetailsForm table{
+    margin: 0 auto;
+}
+#landRegForm table tbody tr td select{
+    width: 200px;
+    font-size: 12px;
+}
+#landRegForm table tbody tr td select option{
+    font-family: inherit;
+}
+#landRegForm table tbody tr,#getLandDetailsForm table tbody tr{
+    margin-top: 10px;
+}
+#landRegForm table tbody tr td,#getLandDetailsForm table tbody tr td{
+    padding: 5px;
+    font-size: 12px;
+}
+#landRegForm table tbody tr td input ,#getLandDetailsForm table tbody tr input{
+    font-size: 12px;
+    padding: 3px;
+    width: 400px;
+}
+.title-wrapper{
+    width: 100%;
+    margin: 25px auto;
+    text-align: center;
+    
+}
+.mapContainer{
+    position: relative;
+    display: block;
+    background: #eeeeee;
+    width: 600px;
+    height: 300px;
+    z-index: 99;
+    margin-top: 20px
+}

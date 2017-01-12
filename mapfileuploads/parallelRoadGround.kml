@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+	<Document>
+		<name>GPS Visualizer data</name>
+		<Style id="waypoint">
+			<IconStyle>
+				<color>ffffffff</color>
+				<scale>1</scale>
+				<Icon><href>http://maps.google.com/mapfiles/kml/pal4/icon56.png</href></Icon>
+				<hotSpot x="0.5" xunits="fraction" y="0.5" yunits="fraction" />
+			</IconStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3 align="left" style="white-space:nowrap;">$[name]</font></h3> <p align="left">$[description]</p>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id="track">
+			<LineStyle>
+				<color>ff0000ff</color>
+				<width>3</width>
+			</LineStyle>
+		</Style>
+		<Style id="polygon">
+			<LineStyle>
+				<color>ff9900ff</color>
+				<width>3</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>409900ff</color>
+				<colorMode>normal</colorMode>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Folder>
+			<name>Tracks</name>
+		<Placemark>
+				<name>ParallelRoadGround</name>
+				<description>Length: 1.69 km (1.05 mi)</description>
+				<visibility>1</visibility>
+				<styleUrl>#polygon</styleUrl>
+				<Polygon>
+					<extrude>1</extrude>
+					<altitudeMode>clampedToGround</altitudeMode>
+					<outerBoundaryIs>
+						<LinearRing>
+							<coordinates>
+								86.1455584,22.7762409 86.1455154,22.7757265 86.1454940,22.7753308 86.1454725,22.7749153 86.1454940,22.7745592 86.1461163,22.7742030 86.1464596,22.7740843 86.1468244,22.7739854 86.1471462,22.7739854 86.1474681,22.7739656 86.1478114,22.7739656 86.1481333,22.7739656 86.1484551,22.7739656 86.1487341,22.7739656 86.1490989,22.7739656 86.1493993,22.7739656 86.1498284,22.7739656 86.1500645,22.7739656 86.1504722,22.7739656 86.1505580,22.7743020 86.1506009,22.7746779 86.1506009,22.7751329 86.1506009,22.7753110 86.1504292,22.7755880 86.1503863,22.7757462 86.1502361,22.7758254 86.1499357,22.7759441 86.1495924,22.7760034 86.1493134,22.7760826 86.1488414,22.7761419 86.1476076,22.7762903 86.1457729,22.7763200 86.1459661,22.7763398 86.1462021,22.7763398 86.1465025,22.7763200 86.1467814,22.7763200 86.1473823,22.7763398 86.1485839,22.7762211 86.1455584,22.7762409
+							</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+	</Document>
+</kml>

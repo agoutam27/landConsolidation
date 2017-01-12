@@ -1,0 +1,15 @@
+{
+  "name": "landconsolidation",
+  "version": "1.0.0",
+  "description": "Land Consolidation Project",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "akhilesh,vivek,purushottam",
+  "license": "ISC",
+  "dependencies": {
+    "@mapbox/togeojson": "^0.16.0",
+    "jquery": "^3.1.1"
+  }
+}
