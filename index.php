@@ -6,6 +6,8 @@
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $ownerName = cleanData($_POST["ownerName"]);
         $fhName = cleanData($_POST["fhName"]);
+        $stateName = cleanData($_POST["stateName"]);
+        $districtName = cleanData($_POST["districtName"]);
         $villageName = cleanData($_POST["villageName"]);
         $lcName = cleanData($_POST["lcName"]);
         $tName = cleanData($_POST["tName"]);
@@ -30,7 +32,7 @@
                 if($mapFileSize == 0){
                     $errorMessage = "Map file should not be empty";
                 }else{
-                    $sql = "INSERT INTO `registered_lands`(`ownername`, `fhname`, `vname`, `lcarea`, `taluka`, `newkhatanum`, `oldkhatanum`, `lclassify`, `tax`, `address`, `pathofmap`,`cyesno`) VALUES ('$ownerName','$fhName','$villageName','$lcName','$tName',$kNumbernew,$kNumberold,'$lClassify',$tax,'$lAddress','$target_file','$cyesno')";
+                    $sql = "INSERT INTO `registered_lands`(`ownername`, `fhname`,`state`,`district`,`vname`, `lcarea`, `taluka`, `newkhatanum`, `oldkhatanum`, `lclassify`, `tax`, `address`, `pathofmap`,`cyesno`) VALUES ('$ownerName','$fhName','$stateName','$districtName','$villageName','$lcName','$tName',$kNumbernew,$kNumberold,'$lClassify',$tax,'$lAddress','$target_file','$cyesno')";
                     if($conn->query($sql) === TRUE){
                         move_uploaded_file($_FILES["mapfile"]["tmp_name"], $target_file);
                         $successMessage = "Land Registered Successfully";
@@ -82,6 +84,26 @@
                                 </td>
                                 <td>
                                     <input type="text" name="fhName" placeholder="Enter Fathers or Husbands Name Here" id="fhName"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="stateName">State Name</label>
+                                </td>
+                                <td>
+                                    <select name="stateName" id="stateName" onchange = "loadDistrict(this,1)">
+                                        
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="districtName">District Name</label>
+                                </td>
+                                <td>
+                                    <select name="districtName" id="districtName">
+                                        
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
@@ -184,6 +206,16 @@
                             
                             <tr>
                                 <td colspan="2">
+                                    <p  style="color:red;font-size: 11px;margin: 5px;">Map will be displayed here</p>
+                                    <div class="canvasContainer">
+                                        <canvas id="mapCanvas"></canvas>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p  style="color:red;font-size: 11px;margin: 5px;">Google Map will be displayed here</p>
                                     <div class="mapContainer">
                                         <img src='' id='gmap'/>
                                     </div>

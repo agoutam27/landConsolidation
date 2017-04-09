@@ -25,10 +25,10 @@
                 <table style="margin:25px auto;">
                     <tbody>
                 <?php
-                    if($_SERVER["REQUEST_METHOD"]=="POST"){
-                        $ownerName = cleanData($_POST['ownerNameGd']);
-                        $talukName = cleanData($_POST['tNameGd']);
-                        $knum = cleanData($_POST['kNumbernewGd']);
+                    if($_SERVER["REQUEST_METHOD"]=="GET"){
+                        $ownerName = cleanData($_GET['ownerNameGd']);
+                        $talukName = cleanData($_GET['tNameGd']);
+                        $knum = cleanData($_GET['kNumbernewGd']);
                         $sql = "select * from `registered_lands` where `ownername`='$ownerName' and `taluka`='$talukName' and `newkhatanum`=$knum";
                         $result = $conn->query($sql);
 
