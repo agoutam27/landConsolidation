@@ -55,8 +55,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td>
                                     <button type="button" id="getLandDetailsFormSubmitButton">Get land details</button>
+                                </td>
+                                <td>
+                                    <button type="button" onclick="toggleSearch()"  style="">Toggle Search</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -88,7 +91,22 @@
                                         
                                     </select>
                                 </td>
-                            </tr>                            
+                            </tr>
+                            <tr id="villageNameOptions">
+                                <td>
+                                    <label for="villageName">Village Name</label>
+                                </td>
+                                <td>
+                                    <select name="villageName" id="villageName" onchange="toggleSearchResults()">
+                                        
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="button" onclick="toggleSearch()"  style="">Toggle Search</button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </form>
@@ -109,7 +127,11 @@
                     </table>
                 </div>
                 <hr style="width: 70%;margin: 30px auto;"/>
-                <button onclick="toggleSearch()"  style="position: fixed; bottom: 200px; margin: 0 618px;">Toggle Search</button>
+                <div id="allMapsCanvasContainer">
+                    <p style="color:red;font-size: 11px;margin: 5px;">Map</p>
+                    <canvas id="allMapsCanvas"></canvas>
+                </div>
+                
             </div>
         </div>
         

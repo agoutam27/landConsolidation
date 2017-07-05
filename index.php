@@ -213,7 +213,7 @@
                                 </td>
                             </tr>
                             <tr>
-                            <tr>
+                            <tr style="display: none;">
                                 <td colspan="2">
                                     <p  style="color:red;font-size: 11px;margin: 5px;">Google Map will be displayed here</p>
                                     <div class="mapContainer">

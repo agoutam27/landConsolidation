@@ -51,6 +51,61 @@ $(document).ready(function(){
     window.ConvertToRadian = function(input){
         return input*Math.PI/180;
     }
+    
+    window.displayAllCanvas = function(){
+        $("#allMapsCanvas").css("background-color","#32CD32");
+        var allMapsCanvas = document.getElementById("allMapsCanvas");
+        var allMapsCanvasContext = allMapsCanvas.getContext('2d');
+        var canvasMapCoordinates = [
+//            {
+//                name: "Test",
+//                moveTo: [0,0],
+//                coordinates: [{x:300,y:150}]
+//            },
+            {
+                name: "Farm1",
+                moveTo: [260,70],
+                coordinates: [{x:260,y:180},{x:260,y:230},{x:390,y:200},{x:390,y:150},{x:350,y:150},{x:350,y:170},{x:260,y:70}]
+            },
+            {
+                name: "Farm2",
+                moveTo: [190,180],
+                coordinates: [{x:190,y:70},{x:240,y:70},{x:260,y:70},{x:260,y:180},{x:225,y:180},{x:190,y:180}]
+            },
+            {
+                name: "Farm3",
+                moveTo: [190,180],
+                coordinates: [{x:190,y:220},{x:190,y:300},{x:225,y:300},{x:260,y:230},{x:260,y:180},{x:225,y:180},{x:190,y:180}]
+            },
+            {
+                name: "Farm4",
+                moveTo: [390,150],
+                coordinates: [{x:390,y:200},{x:390,y:220},{x:530,y:230},{x:530,y:160},{x:420,y:150},{x:390,y:150}]
+            },
+            {
+                name: "Farm5",
+                moveTo: [390,220],
+                coordinates: [{x:390,y:300},{x:580,y:300},{x:580,y:230},{x:530,y:220},{x:390,y:220}]
+            },
+            {
+                name: "Farm6",
+                moveTo: [530,160],
+                coordinates: [{x:530,y:220},{x:580,y:230},{x:580,y:300},{x:600,y:290},{x:600,y:150},{x:530,y:160}]
+            }
+
+
+        ];
+        allMapsCanvasContext.beginPath();
+        for(cIndex = 0;cIndex < 3; cIndex++){
+            
+            allMapsCanvasContext.moveTo(canvasMapCoordinates[cIndex].moveTo[0]/2,canvasMapCoordinates[cIndex].moveTo[1]/2);
+            for(i = 0;i < canvasMapCoordinates[cIndex].coordinates.length;i++){
+                allMapsCanvasContext.lineTo(canvasMapCoordinates[cIndex].coordinates[i].x/2,canvasMapCoordinates[cIndex].coordinates[i].y/2);                               
+            }
+        }
+        allMapsCanvasContext.stroke();
+        
+    }
     window.loadCanvasMap = function(geoJsonData){
         var properties = geoJsonData.features[0].properties;
         console.log(properties);
@@ -63,19 +118,48 @@ $(document).ready(function(){
         console.log(canvasWidth,canvasHeight);
         mapCanvasContext.beginPath();
         var canvasMapCoordinates = [
+//            {
+//                name: "Test",
+//                moveTo: [0,0],
+//                coordinates: [{x:300,y:150}]
+//            },
             {
-                name: "smallGround",
-                moveTo: [10,10],
-                coordinates: [{x: 10,y: 20},{x:30,y:40}]
+                name: "Farm1",
+                moveTo: [260,70],
+                coordinates: [{x:260,y:180},{x:260,y:230},{x:390,y:200},{x:390,y:150},{x:350,y:150},{x:350,y:170},{x:260,y:70}]
             },
             {
-                name: "parallelRoad",
-                coordinates: [{x: 10,y: 20},{x:0,y:60}]
+                name: "Farm2",
+                moveTo: [190,180],
+                coordinates: [{x:190,y:70},{x:240,y:70},{x:260,y:70},{x:260,y:180},{x:225,y:180},{x:190,y:180}]
+            },
+            {
+                name: "Farm3",
+                moveTo: [190,180],
+                coordinates: [{x:190,y:220},{x:190,y:300},{x:225,y:300},{x:260,y:230},{x:260,y:180},{x:225,y:180},{x:190,y:180}]
+            },
+            {
+                name: "Farm4",
+                moveTo: [390,150],
+                coordinates: [{x:390,y:200},{x:390,y:220},{x:530,y:230},{x:530,y:160},{x:420,y:150},{x:390,y:150}]
+            },
+            {
+                name: "Farm5",
+                moveTo: [390,220],
+                coordinates: [{x:390,y:300},{x:580,y:300},{x:580,y:230},{x:530,y:220},{x:390,y:220}]
+            },
+            {
+                name: "Farm6",
+                moveTo: [530,160],
+                coordinates: [{x:530,y:220},{x:580,y:230},{x:580,y:300},{x:600,y:290},{x:600,y:150},{x:530,y:160}]
             }
+
+
         ];
-        mapCanvasContext.moveTo(canvasMapCoordinates[0].moveTo[0],canvasMapCoordinates[0].moveTo[1]);
-        for(i = 0;i < canvasMapCoordinates[0].coordinates.length;i++){
-            mapCanvasContext.lineTo(canvasMapCoordinates[0].coordinates[i].x,canvasMapCoordinates[0].coordinates[i].y);                               
+        cIndex = 5;
+        mapCanvasContext.moveTo(canvasMapCoordinates[cIndex].moveTo[0]/2,canvasMapCoordinates[cIndex].moveTo[1]/2);
+        for(i = 0;i < canvasMapCoordinates[cIndex].coordinates.length;i++){
+            mapCanvasContext.lineTo(canvasMapCoordinates[cIndex].coordinates[i].x/2,canvasMapCoordinates[cIndex].coordinates[i].y/2);                               
         }
         mapCanvasContext.stroke();
     }
@@ -527,20 +611,51 @@ $(document).ready(function(){
       }
         if(x==2){
             setTimeout(function(){
-                toggleSearchResults();
+                showVillages();
             },100);
         }
     }
-    window.toggleSearchResults = function(){
+    window.showVillages = function(){
         var state = $("#stateName").val();
         var district = $("#districtName").val();
+        $.ajax({
+            method: 'POST',
+            datatype: 'application/json',
+            url: 'fetchVillages.php',
+            data: {
+                'state':state,
+                'district': district
+            },
+            success: function(result){
+                result = JSON.parse(result);
+                console.log(result);
+                $("#villageNameOptions").show();
+                var a = "<option>SELECT VILLAGE</option>";
+                for(i = 0;i<result.length;i++){
+                    var string = "<option value='"+result[i].vname+"'>"+result[i].vname+"</option>";
+                    a = a + string;
+                    $("#villageName").html(a);
+                }
+            },
+            error: function(err){
+                alert(err);
+            }
+        });
+        
+    }
+    window.toggleSearchResults = function(){
+        displayAllCanvas();
+        var state = $("#stateName").val();
+        var district = $("#districtName").val();
+        var village = $("#villageName").val();
         $.ajax({
             method: 'POST',
             datatype: 'application/json',
             url: 'toggleSearchResJson.php',
             data: {
                 'state':state,
-                'district': district
+                'district': district,
+                'village': village
             },
             success: function(result){
                 result = JSON.parse(result);
